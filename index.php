@@ -76,16 +76,44 @@ if (isset($_GET['logout'])) {
                 </h3>
             </div>
         <?php endif ?>
+        <?php if (isset($_SESSION['error'])) : ?>
+            <div class="success">
+                <h3>
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                    ?>
+                </h3>
+            </div>
+        <?php endif ?>
     </div>
 
     <div class="contrainers">
         <?php if (isset($_SESSION['user_name'])) : ?>
             <p> welcome <strong> <?php echo $_SESSION['user_name']; ?> </strong> </p>
-            <p> <a href="index.php?logout='1'" style="color: red;"> logout </a> </p>
         <?php endif ?>
-
     </div>
 
+    <div class="contrainers">
+        <div align="center">
+            <div class="post">
+                <form action="postpro.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="post_id">
+                    <input type="text" name="post_content" id="post_content">
+                    <input type="submit" value="Post" name="post_but">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="contrainers">
+        <div align="center">
+
+        </div>
+    </div>
+
+
 </body>
+<script src="js/bootstrap.min.js"></script>
 
 </html>
